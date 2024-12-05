@@ -1,0 +1,170 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url("/static/img/background.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.navbar{
+    opacity: 0.5;
+}
+
+.tablePage{
+    width: 100%;
+}
+
+.rouletteImage{
+    text-align: center;
+    width: 220px;
+    height: 220px;
+    margin-left: 60px;
+}
+
+.btnLancer{
+    margin-left: 110px;
+    padding: 5px;
+    background: linear-gradient(to right, red, black); 
+    color: white;
+}
+
+.resultatContainer{
+    border: 1px solid cyan;
+    border-radius: 200px;
+    width: auto;
+    display: inline-block;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    border-image: linear-gradient(to right, #ff5733, #33c5ff) 1; /* Gradient and stretch */
+}
+
+.plateauContainer{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 400px;
+   
+    margin-right: auto;
+}
+
+.plateau {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    background-color: #2196F3;
+    
+  }
+  .case {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 8px;
+    font-size: 13px;
+    text-align: center;
+    width: 33px;
+    height: 40px;
+    color: white;
+    cursor:pointer;
+  }
+
+  .caseMise{
+    font-size: 9px;
+    color: yellow;
+    margin-top: -3px;
+  }
+
+  .pair {
+    grid-column: span 3; /* Span across 3 columns */
+    width: 100%;
+    background-color: green
+  }
+  .rouge-fill {
+    grid-column: span 3; /* Span across 3 columns */
+    width: 100%;
+    background-color: red;
+  }
+  .noir-fill {
+    grid-column: span 3; /* Span across 3 columns */
+    width: 100%;
+    background-color: black;
+  }
+  .impair {
+    grid-column: span 3; /* Span across 3 columns */
+    width: 100%;    
+    background-color: green
+  }
+  .rouge{
+    background-color: red;
+  }
+
+  .noir{
+    background-color: black;
+  }
+
+.numberContainer{
+    margin-left: 100px;
+}
+
+  .mise{
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+  }
+
+  .reste{
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+  }
+
+  .balance{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: grey;
+    color: white;
+    margin-left: 50px;
+  }
+
+  .jeton{
+    display: inline-block;
+    margin-left: 38px;
+    margin-right: 38px;
+    border-radius: 1000px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+
+  #jeton1{
+    background-color: red;
+  }
+
+  #jeton2{
+    background-color: green;
+  }
+
+  #jeton5{
+    background-color: #2196F3;
+  }
+
+  #jeton10{
+    background-color: black;
+  }
+
+  .jetonActive{
+    border: 4px solid aqua;
+    height: 34px;
+    width: 34px;
+  }
+
+  .btnTurning{
+    background-color: grey;
+  }
