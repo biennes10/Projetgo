@@ -208,6 +208,9 @@ const Roulette = {
             type: 'POST',
             contentType: 'application/json', // Indique que le corps de la requête est en JSON
             data: JSON.stringify({ "number": gain }), // Convertit l'objet en chaîne JSON
+            headers: {
+                'Authorization': 'Jesuisuntokenbearer' // Remplacez "your-token-here" par votre token réel
+            },
             success: function(response) {
                 $("#btnLancer").removeClass("btnTurning");
 

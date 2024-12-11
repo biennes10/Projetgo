@@ -107,10 +107,18 @@ func writeDataToFile(data Data) error {
 }
 
 // Nouveau gestionnaire pour mettre à jour le solde et l'historique
-// Nouveau gestionnaire pour mettre à jour le solde et l'historique
 func updateBalance(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Récupérer le token dans l'en-tête Authorization
+	token := r.Header.Get("Authorization")
+	expectedToken := "Jesuisuntokenbearer" // Remplacez par votre token attendu
+
+	if token != expectedToken {
+		http.Error(w, "Token invalide ou manquant", http.StatusUnauthorized)
 		return
 	}
 
@@ -121,8 +129,6 @@ func updateBalance(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-
-	fmt.Println("Corps de la requête :", string(body)) // Pour le débogage
 
 	var input struct {
 		Number int `json:"number"`
@@ -135,12 +141,14 @@ func updateBalance(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Lire les données existantes
 	data, err := readDataFromFile()
 	if err != nil {
 		http.Error(w, "Impossible de lire les données", http.StatusInternalServerError)
 		return
 	}
 
+	// Mettre à jour le solde
 	data.Balance += input.Number
 	newEntry := Game{
 		Balance: data.Balance,
@@ -149,6 +157,7 @@ func updateBalance(w http.ResponseWriter, r *http.Request) {
 	}
 	data.History = append(data.History, newEntry)
 
+	// Enregistrer les nouvelles données
 	err = writeDataToFile(data)
 	if err != nil {
 		http.Error(w, "Erreur lors de l'écriture des données", http.StatusInternalServerError)
